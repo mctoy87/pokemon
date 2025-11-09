@@ -1,0 +1,16 @@
+.card-form {
+  margin-bottom: 20px;
+}
+
+.card-form input {
+  width: 300px;
+  padding: 8px;
+  margin-bottom: 8px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.card-form button {
+  padding: 8px 16px;
+  cursor: pointer;
+}

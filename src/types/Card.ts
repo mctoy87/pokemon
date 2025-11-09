@@ -5,5 +5,5 @@ export interface Card {
   description: string;
   image: string;
   source: 'api' | 'user'; // откуда карточка: из API или создана пользователем
-  creaatedAt?: Date;             // опциональное поле (только для созданных пользователем)
+  createdAt?: Date;             // опциональное поле (только для созданных пользователем)
 }
