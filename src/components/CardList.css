@@ -1,5 +1,66 @@
 .card-list {
+  width: 100%;
+  max-width: 1200px;   /* или другого значения, если хотите ограничить */
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
 }
+
+/* Контейнер для списка карточек */
+.card-list__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 24px 0;
+  justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-list__filter {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+card-list__filter-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.card-list__filter:hover {
+  background-color: #f0f0f0;
+}
+
+.card-list__filter-button.active {
+  font-weight: bold;
+  background-color: #d1eaff;
+  border-color: #3399ff;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 900px) {
+  .card-list__wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 18px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-list__wrapper {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 10px 0;
+  }
+}
+

@@ -1,27 +1,20 @@
-import React from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
-import { Card } from './components/Card';
-import type { Card as CardType } from './types/Card';
 import { CardForm } from './components/CardForm';
-import { CardList } from './components/Card.List';
-
-const testCard: CardType = {
-    id: 1,
-    title: "Тестовая карточка",
-    description: "Это пример описания",
-    image: "https://via.placeholder.com/300",
-    source: "user",
-    createdAt: new Date(),
-    liked: false,
-};
+import { CardList } from './components/CardList';
+import { CardDetail } from "./components/CardDetail";
 
 function App() {
   return (
-    <div className="App">
-      <h1>🎯 Моё приложение с карточками</h1>
-        <CardForm />
-        <CardList />
-        <Card card={testCard}/>
+    <div className="app">
+      <h1 className="app__title">Покемоны</h1>
+      <Routes>
+        <Route path='/' element={<Navigate to="/products" replace/>}/>
+        <Route path="/products" element={<CardList />} />
+        <Route path="/create-product" element={<CardForm />} /> 
+        <Route path="/products/:id" element={<CardDetail />} />
+        <Route path="*" element={<div>Страница не найдена</div>} />
+      </Routes>
     </div>
   );
 }

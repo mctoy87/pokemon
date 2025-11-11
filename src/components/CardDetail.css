@@ -1,0 +1,79 @@
+.card-detail {
+  max-width: 440px;
+  margin: 36px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(60, 60, 120, 0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 22px 24px 22px;
+  box-sizing: border-box;
+}
+
+.card-detail__image {
+  width: 100%;
+  max-width: 260px;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 8px rgba(130, 130, 130, 0.10);
+}
+
+.card-detail__title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-detail__description {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.card-detail__info,
+.card-detail__liked {
+  color: #777;
+  font-size: 1rem;
+  margin-bottom: 7px;
+  text-align: center;
+}
+
+/* Кнопка "Назад" */
+.card-detail__back {
+  align-self: flex-start;
+  margin-bottom: 9px;
+  background: #eaeaea;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.card-detail__back:hover {
+  background: #cfdff8;
+}
+
+@media (max-width: 700px) {
+  .card-detail {
+    max-width: 98vw;
+    padding: 14px 7px 18px 7px;
+  }
+  .card-detail__image {
+    max-width: 170px;
+    max-height: 120px;
+    margin-bottom: 8px;
+  }
+  .card-detail__title {
+    font-size: 1.18rem;
+  }
+  .card-detail__description {
+    font-size: 1rem;
+  }
+}

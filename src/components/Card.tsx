@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import type { Card as CardType } from "../types/Card";
 import "./Card.css";
 import deleteIcon from '../assets/delete.svg';
@@ -12,15 +13,41 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ card, onDelete, onLikeToggle }) => {
+  const navigate = useNavigate();
+
+  // Стрелочная функция-обработчик
+  const handleCardClick = (event: React.MouseEvent) => {
+    // Если клик был по ЛЮБОЙ кнопке внутри карточки — не переходим
+    if (event.target instanceof HTMLButtonElement) {
+      return;
+    }
+    // Переходим на страницу деталей карточки
+    navigate(`/products/${card.id}`);
+  };
+
   return (
-    <div className="card">
-      <img className="card-image" src={card.image} alt={card.title} />
-      <h3 className="card-title">{card.title}</h3>
-      <p className="card-description">{card.description}</p>
-      <small className="card-source">Источник: {card.source === "api" ? "API" : "Пользователь"}</small>
-      <div className="card-action">
+    <div className="card" onClick={handleCardClick}>
+      <img className="card__image" src={card.image} alt={card.title} />
+      <h3 className="card__title">{card.title}</h3>
+      <p className="card__description">{card.description}</p>
+      <small className="card__source">Источник: {card.source === "api" ? "API" : "Пользователь"}</small>
+      <div className="card__action">
+        {onDelete && (
+          <button  
+            className="card__delete-button" 
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(card.id);
+            }}
+            aria-label="Удалить карточку"
+            title="Удалить карточку"
+          >
+            <img src={deleteIcon} alt="Удалить" width={20} height={20} />
+          </button>
+        )}
+        
         <button 
-          className={`card-likebtn ${card.liked ? "liked" : ""}`}
+          className={`card__like-button ${card.liked ? "card__like-button--liked" : ""}`}
           onClick={(e) => {
             e.stopPropagation();
             if (onLikeToggle) onLikeToggle(card.id);
@@ -46,19 +73,6 @@ export const Card: React.FC<CardProps> = ({ card, onDelete, onLikeToggle }) => {
         </svg>
         </button>
       </div>
-      {onDelete && (
-        <button  
-          className="card-del" 
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete(card.id);
-          }}
-          aria-label="Удалить карточку"
-          title="Удалить карточку"
-        >
-          <img src={deleteIcon} alt="Удалить" width={20} height={20} />
-        </button>
-      )}
     </div>
   );
 };

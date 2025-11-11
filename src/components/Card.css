@@ -1,74 +1,104 @@
+/* Стилизация отдельной карточки */
 .card {
-  position: relative;
-  max-width: 300px;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: white;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.card-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.card-title {
-  margin: 8px 0 4px 0;
-}
-
-.card-description {
-  margin: 0 0 8px 0;
-  color: #555;
-}
-
-.card-source {
-  color: #999;
-}
-
-.card-likebtn {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-  transition: fill 0.3s ease, stroke 0.3s ease;
+  max-width: 320px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(60, 60, 120, 0.08);
+  padding: 18px 12px 12px 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: none;
-  box-shadow: none;
+  transition: box-shadow 0.2s;
+  /* position: relative; */
 }
 
-.card-likebtn:focus,
-.card-likebtn:active {
+.card:hover {
+  box-shadow: 0 4px 16px rgba(60, 60, 120, 0.16);
+}
+
+.card__image {
+  width: 100%;
+  max-width: 200px;
+  max-height: 160px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.card__title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.card__description {
+  color: #353535;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  max-height: 4.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.card__source {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.card__action {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+}
+
+.card__like-button,
+.card__delete-button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.card__like-button:focus,
+.card__like-button:active {
   outline: none;
   border: none;
   box-shadow: none;
 }
 
-.card-likebtn:focus-visible {
+.card__like-button:focus-visible {
   outline: 2px solid #eee;
 }
 
-.card-del {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  border: none;
-  background-color: transparent;
-  padding: 4px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-  
+.card__delete-button:hover {
+  background-color: rgba(221, 21, 64, 0.705); /* легкий красный фон при наведении */
 }
 
-.card-del:hover {
-  background-color: rgba(221, 21, 64, 0.705); /* легкий красный фон при наведении */
+@media (max-width: 900px) {
+  .card {
+    max-width: 240px;
+    padding: 14px 8px 10px 8px;
+  }
+  .card__image {
+    max-width: 140px;
+    max-height: 120px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    max-width: 98vw;
+    padding: 10px 4px 8px 4px;
+  }
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'https://pokeapi.co/api/v2';
+export const API_URL = 'https://pokeapi.co/api/v2';
 
 // Интерфейс для данных покемона из API
 export interface PokemonData {
