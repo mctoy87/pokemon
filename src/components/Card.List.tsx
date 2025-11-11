@@ -9,6 +9,7 @@ export const CardList:React.FC = () => {
   const fetchCardsFromApi = useCardsStore((state) => state.fetchCardsFromApi);
   const isLoading = useCardsStore((state) => state.isLoading);
   const error = useCardsStore((state) => state.error);
+  const toggleLike = useCardsStore((state) => state.toggleLike);
 
   // Вызов загрузки карточек при монтировании
   useEffect(() => {
@@ -24,7 +25,8 @@ export const CardList:React.FC = () => {
         <Card
           key={card.id}
           card={card}
-          onDelete={card.source === 'user' ? removeCard : undefined}
+          onDelete={removeCard}
+          onLikeToggle={toggleLike}
         />
       ))}
     </div>

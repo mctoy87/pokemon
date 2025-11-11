@@ -12,6 +12,7 @@ const testCard: CardType = {
     image: "https://via.placeholder.com/300",
     source: "user",
     createdAt: new Date(),
+    liked: false,
 };
 
 function App() {
